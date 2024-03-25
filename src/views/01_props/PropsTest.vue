@@ -1,17 +1,22 @@
 <template>
-  <div>
-    <h1>我是父组件:props学习</h1>
-    <hr />
-    <Child money="666" :car="car"></Child>
-  </div>
+    <div class="box">
+        <h1>props:我是父组件曹操</h1>
+        <hr />
+        <Child info="我是曹操" :money="money"></Child>
+    </div>
 </template>
 
 <script setup lang="ts">
-import Child from "./Child.vue";
+// props:可以实现父子组件通信，props数据还是只读的!!!
 import { ref } from "vue";
-//定义车
-let car = ref("法拉利");
+import Child from "./Child.vue";
+let money = ref(10000);
 </script>
 
 <style scoped>
+.box {
+    width: 100vw;
+    height: 400px;
+    background: yellowgreen;
+}
 </style>
