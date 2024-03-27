@@ -1,23 +1,23 @@
 <template>
-  <div class="cz">
-    <h1>我是曹植</h1>
-    <button @click="handler">点击我给你送一板砖</button>
-  </div>
+    <div class="child2">
+        <h2>我是子组件2：曹丕</h2>
+        <button @click="handler">点击我给兄弟送一台法拉利</button>
+    </div>
 </template>
 
 <script setup lang="ts">
-import bus from '../../utils/bus';
-//按钮回调
-const handler = ()=>{
-  //事件类型
-  bus.emit('sendData','搬砖');
-}
+// 引入$bus对象
+import $bus from "../../bus";
+// 点击按钮回调
+const handler = () => {
+    $bus.emit("car", { car: "法拉利" });
+};
 </script>
 
 <style scoped>
-.cz {
-  width: 100%;
-  height: 100px;
-  background: pink;
+.child2 {
+    width: 300px;
+    height: 300px;
+    background: skyblue;
 }
 </style>

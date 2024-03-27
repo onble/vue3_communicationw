@@ -1,45 +1,55 @@
 <template>
-  <div>
-    <h1>vue3事件相关</h1>
-    <pre @click="handler(1,2,$event)">
-       大奖东去浪淘尽,千古风流人物
-    </pre>
-    <div @haha="handler1">我是一个div</div>
-    <hr>
-    <Event1 @getCar="handler2"></Event1>
-    <hr>
-    <!--下面这种就是原生DOM事件--->
-    <!--相当于给组件根节点绑定DOM事件+事件委派-->
-    <Event2 @click="handler3" @xxx="handler4"></Event2>
-  </div>
+    <div>
+        <h1>事件</h1>
+        <!-- 原生DOM事件 -->
+        <pre @click="handler">
+        大江东去浪淘尽，千古风流人物。
+        </pre>
+        <button @click="handler1(1, 2, 3, $event)">点击我传递多个参数</button>
+        <hr />
+        <!-- 
+            vue2框架当中：这种写法自定义事件，可以通过.native修饰符变为原生DOM事件
+            vue3框架下这种写法其实即为原生DOM事件
+
+            vue3:原生的DOM事件不管是放在标签身上，组件标签身上都是原生DOM事件
+        -->
+        <Event1 @click="handler2"></Event1>
+        <hr />
+        <!-- 绑定自定义事件xxx:实现子组件给父组件传递数据 -->
+        <Event2 @xxx="handler3" @click="handler4"></Event2>
+    </div>
 </template>
 
 <script setup lang="ts">
-//事件:原生DOM事件、组件通信方式自定义事件
-//事件回调
-//引入子组件
-import Event1 from './Event1.vue';
-import Event2 from './Event2.vue';
-const handler = (a,b,event)=>{
-   console.log('原生DOM事件',event);
-}
-//div自定义事件的回调--没有任何意义
-const handler1 = ()=>{
+// 引入子组件
+import Event1 from "./Event1.vue";
+import Event2 from "./Event2.vue";
+// 事件回调--1
+const handler = (any: event) => {
+    // alert(12306);
+    // event即为事件对象
+    console.log(event);
+    // PointerEvent
+    // 事件里面有各种信息
+};
+// 事件回调--2
+const handler1 = (a, b, c, $event) => {
+    console.log(a, b, c, $event);
+};
+// 事件回调--3
+const handler2 = () => {
+    console.log(123);
+};
+// 事件回调--4
+const handler3 = (param1, param2) => {
+    console.log(param1, param2);
+};
+// 事件回调--5
+const handler4 = (param1, param2) => {
+    // alert(123);
 
-}
-//第一个子组件绑定自定义事件回调
-const handler2 = (car)=>{
-  console.log('接收到儿子给的'+car)
-}
-
-//第二个子组件绑定事件
-const handler3 = (event)=>{
-   console.log(event);
-}
-
-const handler4 = (a,b,c)=>{
-   console.log(a,b,c);
-}
+    console.log(param1, param2);
+};
 </script>
 
 <style scoped>

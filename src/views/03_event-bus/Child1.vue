@@ -1,23 +1,29 @@
 <template>
-  <div class="cp">
-    <h1>我是曹丕</h1>
-  </div>
+    <div class="child1">
+        <h3>我是子组件1：曹植</h3>
+    </div>
 </template>
 
 <script setup lang="ts">
+import $bus from "../../bus";
+// console.log($bus);
+// {all: Map(0), on: ƒ, off: ƒ, emit: ƒ}
+
+// 组合式API函数
 import { onMounted } from "vue";
-import bus from "../../utils/bus";
+// 组件挂在完毕的时候，当前组件绑定一个事件，接收将来兄弟组件传递的数据
 onMounted(() => {
-  bus.on("sendData", (params) => {
-    console.log(params);
-  });
+    // 第一个参数：即为事件类型  第二个参数：即为事件回调
+    $bus.on("car", (car) => {
+        console.log(car);
+    });
 });
 </script>
 
 <style scoped>
-.cp {
-  width: 100%;
-  height: 100px;
-  background: red;
+.child1 {
+    width: 300px;
+    height: 300px;
+    background: hotpink;
 }
 </style>
