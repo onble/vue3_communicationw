@@ -1,26 +1,32 @@
 <template>
-  <div>
-    <h1>组件通信手段v-model</h1>
-    <h1>父组件的钱{{money}}</h1>
-    <Child :money="money" @update:money="handler"></Child>
-    <hr>
-    <Child1 v-model="money"></Child1>
-  </div>
+    <div class="box">
+        <h1>pinia</h1>
+        <div class="container">
+            <Child></Child>
+            <Child1></Child1>
+        </div>
+    </div>
 </template>
 
 <script setup lang="ts">
-import Child from './Child.vue'
-import Child1 from './Child1.vue';
-import {ref} from 'vue';
-let money = ref(3000);
-const handler = (val)=>{
-   money.value+=val;
-}
+import Child from "./Child.vue";
+import Child1 from "./Child1.vue";
+// vuex:集中式管理状态容器，可以实现任意组件之间通信！！！
+// 核心概念：state,mutations,actions,getters,modules
 
-const handler1 = (val)=>{
-   money.value+=val;
-}
+// pinia:集中式管理状态容器，可以实现任意组件之间通信！！！
+// 核心概念：state,actions,getters
+
+// pinia写法：选择器API，组合式API
 </script>
 
 <style scoped>
+.box {
+    width: 600px;
+    height: 400px;
+    background: skyblue;
+}
+.container {
+    display: flex;
+}
 </style>

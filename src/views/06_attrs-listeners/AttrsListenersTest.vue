@@ -1,19 +1,33 @@
 <template>
-  <div>
-    <h1>学习$attrs与$listeners</h1>
-    <hr>
-    <!-- my-button:咱们自己封装的按钮,在使用属性与属性值写法与element-plus里面按钮写法一样 -->
-    <my-button type="success" size="small" title="成功按钮" @click="handler" @xxx="handler"></my-button>
-  </div>
+    <div>
+        <h1>useAttrs</h1>
+        <el-button type="primary" size="small" :icon="Edit"></el-button>
+        <HintButton
+            type="primary"
+            size="small"
+            :icon="Edit"
+            title="编辑按钮"
+            @click="handler"
+            @xxx="handler"
+        ></HintButton>
+    </div>
 </template>
 
 <script setup lang="ts">
-//引入自己封装按钮
-import MyButton from './MyButton.vue'
-
-const handler = ()=>{
-
-}
+// vue3框架提供一个方法useAtters方法，它可以获取组件身上的属性与事件！！！
+// 图标组件
+import {
+    Check,
+    Delete,
+    Edit,
+    Message,
+    Search,
+    Star,
+} from "@element-plus/icons-vue";
+import HintButton from "./HintButton.vue";
+const handler = () => {
+    alert(12306);
+};
 </script>
 
 <style scoped>

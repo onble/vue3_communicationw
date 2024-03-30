@@ -10,10 +10,13 @@ import 'element-plus/dist/index.css'
 import App from './App.vue'
 // 引入路由器
 import router from './router'
+// 引入仓库
+import store from './store'
 // 创建app
 const app = createApp(App)
 // 注册pinia
-app.use(createPinia())
+// app.use(createPinia())
+app.use(store)
 app.use(router) // 注册路由器
 app.use(ElementPlus) // 使用element-ui
 // 挂载

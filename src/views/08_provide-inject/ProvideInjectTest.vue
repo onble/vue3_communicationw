@@ -1,20 +1,28 @@
 <template>
-  <div>
-    <h1>我是爷爷{{token}}</h1>
-    <hr />
-    <Child></Child>
-  </div>
+    <div class="box">
+        <h1>Provide与Inject</h1>
+        <p>{{ car }}</p>
+        <hr />
+        <Child></Child>
+    </div>
 </template>
 
 <script setup lang="ts">
 import Child from "./Child.vue";
 
-//提供数据
-import { provide, ref } from "vue";
-let token = ref(new Date());
-//两个参数:第一个参数K 第二个参数V
-provide("TOKEN",token);
+// vue3提供provide(提供)和inject(注入),可以实现隔辈组件传递数据
+import { ref, provide } from "vue";
+let car = ref("法拉利");
+// 祖先组件给后代组件提供数据
+// 两个参数：第一个参数就是提供的数据key
+// 第二个参数：祖先组件提供数据
+provide("TOKEN", car);
 </script>
 
 <style scoped>
+.box {
+    width: 100vw;
+    height: 600px;
+    background: skyblue;
+}
 </style>

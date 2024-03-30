@@ -1,25 +1,29 @@
 <template>
-  <div class="dau">
-    <h1>我是女儿存款:{{ money }}</h1>
-    <button @click="sendMoney($parent)">给爸爸送1000+</button>
-  </div>
+    <div class="dau">
+        <h1>我是闺女曹杰:{{ money }}</h1>
+        <button @click="handler($parent)">点击我爸爸给我10000元</button>
+        <!-- 传入的名字就是$parent -->
+    </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
-let money = ref(2000000);
-//闺女的方法
-const sendMoney = ($parent)=>{
-   money.value-=1000;
-   $parent.money+=1000;
-}
-
+// 闺女钱数
+let money = ref(999999);
+// 闺女按钮点击回调
+const handler = ($parent) => {
+    money.value += 10000;
+    console.log($parent);
+    // Proxy(Object)
+    // 需要父亲将数据进行对外暴露
+    $parent.money -= 10000;
+};
 </script>
 
 <style scoped>
 .dau {
-  width: 400px;
-  height: 200px;
-  background: hotpink;
+    width: 300px;
+    height: 300px;
+    background: hotpink;
 }
 </style>

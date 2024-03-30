@@ -1,14 +1,18 @@
 <template>
-  <div>
-    <h1>我是儿子</h1>
-    <hr>
-    <GrandChild></GrandChild>
-  </div>
+    <div class="child">
+        <h1>我是子组件1</h1>
+        <Child></Child>
+    </div>
 </template>
 
 <script setup lang="ts">
-import GrandChild from "./GrandChild.vue";
+import Child from "./GrandChild.vue";
 </script>
 
 <style scoped>
+.child {
+    width: 300px;
+    height: 400px;
+    background: yellowgreen;
+}
 </style>

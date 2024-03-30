@@ -1,21 +1,29 @@
 <template>
-  <div class="son">
-    <h1>我是儿子存款:{{money}}</h1>
-  </div>
+    <div class="son">
+        <h3>我是子组件：曹植:{{ money }}</h3>
+    </div>
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue';
-let money = ref(200);
+import { ref } from "vue";
+// 儿子钱数
+let money = ref(666);
 
-//外部访问对外暴露
-defineExpose({money})
+const fly = () => {
+    console.log("我可以飞");
+};
+// 组件内部数据对外关闭的，别人不能访问
+// 如果想让外部访问需要通过defineExpose方法对外暴露
+defineExpose({
+    money,
+    fly,
+});
 </script>
 
 <style scoped>
 .son {
-  width: 400px;
-  height: 200px;
-  background: #ccc;
+    width: 300px;
+    height: 200px;
+    background: cyan;
 }
 </style>
